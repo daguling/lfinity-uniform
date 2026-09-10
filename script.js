@@ -6,23 +6,29 @@ const products = {
   cyan: { src: "images/lfinity-cyan.jpg", ko: "사이언", en: "CYAN" },
 };
 
-const visual = document.querySelector(".product-visual");
 const productImage = document.querySelector("#productImage");
 const modal = document.querySelector("#imageModal");
 const modalImage = document.querySelector("#modalImage");
+let pendingColor = "purple";
+
+Object.values(products).forEach(({ src }) => {
+  const image = new Image();
+  image.src = src;
+});
 
 document.querySelectorAll(".color-button").forEach((button) => {
   button.addEventListener("click", () => {
-    const item = products[button.dataset.color];
-    visual.classList.add("is-changing");
+    const color = button.dataset.color;
+    const item = products[color];
+    pendingColor = color;
 
     const preload = new Image();
     preload.onload = () => {
+      if (pendingColor !== color) return;
       productImage.src = item.src;
       productImage.alt = `LFINITY ${item.ko} 유니폼 앞면과 뒷면`;
       modalImage.src = item.src;
       modalImage.alt = `LFINITY ${item.ko} 유니폼 앞면과 뒷면 크게 보기`;
-      visual.classList.remove("is-changing");
     };
     preload.src = item.src;
 
