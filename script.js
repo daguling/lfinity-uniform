@@ -4,6 +4,7 @@ const products = {
   purple: { src: "images/lfinity-purple.jpg", ko: "퍼플", en: "PURPLE" },
   pink: { src: "images/lfinity-pink.jpg", ko: "핑크", en: "PINK" },
   cyan: { src: "images/lfinity-cyan.jpg", ko: "사이언", en: "CYAN" },
+  lime: { src: "images/lfinity-lime.jpg", ko: "라임", en: "LIME" },
 };
 
 const productImage = document.querySelector("#productImage");
